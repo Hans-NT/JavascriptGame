@@ -1,0 +1,125 @@
+/*
+    Name: Hansaint Noto
+    Student ID: 922380300
+    Github ID: Hans-NT
+*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    font-family: 'Brush Script MT', cursive;
+    background-color: rgb(78, 49, 10);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+/*
+Styles the restart game button
+*/
+button
+{
+    background-color: yellowgreen;
+    position: absolute;
+    bottom: 60px;
+    border: none;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 1.5rem;
+    padding: 0.7rem 1rem;
+}
+/*
+Styles the restart game button when you hover with mouse
+*/
+button:hover {
+    cursor: pointer;
+    background-color: green;
+}
+/*
+ Score sizing
+*/
+.score{
+    font-size: 4em;
+    margin-bottom: .5em;
+}
+/*
+    Creating the board with rows and columns, gap made in between them
+*/
+.board{
+    height: 600px;
+    width: 700px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 110px;
+}
+/*Creates the holes the mole comes out of*/
+.hole{
+    background-color: rgb(112, 76, 42);
+    /* This forces the box to curve  */
+    border-radius: 50%;
+    box-shadow: inset 0 10px 0 7px rgb(53, 21, 6),
+                inset 0 20px 20px 15px rgba(0, 0, 0, .3),
+                0 0 5px rgba(0, 0, 0, .5);
+    position: relative;
+    overflow: hidden;
+}
+/*Controls the aspects of the mole like size, position, animation*/
+.hole .mole{
+    width: 90%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    animation: rise .3s ease-out;
+}
+
+
+/* Animation for the mole coming up and out */
+@keyframes rise {
+    0%{
+        
+        transform: translateX(-50%) translateY(100%);
+    }
+    100%{
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/*  
+    Cursor icon now changed into the hammer image.
+    Transform allows it to rotat
+*/
+.cursor{
+    height: 110px;
+    width: 100px;
+    position: absolute;
+    top: 100px;
+    background-image: url('assets/hammer.png');
+    background-size: 100% 100%;
+    transform: translate(-40%, -25%);
+    transition: transform .1s;
+    pointer-events: none;
+}
+/* This makes sure that if the cursor is active and when the user clicks, it rotates.*/
+.cursor.active{
+    transform: translate(-20%, -20%) rotate(-45deg);
+}
+/*
+    These are present and are configured so the restart button only appears when the game ends
+    and the start button to appear when you first open up the program
+*/
+#restart {
+    display: none;
+}
+#start {
+    display: block;
+}
